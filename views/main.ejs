@@ -1,0 +1,152 @@
+<%
+  var nameVal = '',emailVal = '',nameErr='',emailErr='',addVal='',addErr='',cityVal='',cityErr='',provVal='',provErr='',pnumbVal='',pnumbErr='';
+  var fshoeVal='', fshoeErr='', fsocksVal='',fsocksErr='',fgloveVal='',fgloveErr=''
+
+  if(typeof errors !== 'undefined'){
+    
+    for(var err of errors){
+      switch(err.path){
+        case 'name1':
+            nameVal = err.value;
+            nameErr = err.msg;
+            break;
+        case 'add':
+            addVal = err.value;
+            addErr = err.msg;
+            break;
+        case 'city':
+            cityVal = err.value;
+            cityErr = err.msg;
+            break;
+        case 'prov':
+            provVal = err.value;
+            provErr = err.msg;
+            break;
+        case 'pnumb':
+            pnumbVal = err.value;
+            pnumbErr = err.msg;
+            break;
+        case 'em':
+            emailVal = err.value;
+            emailErr = err.msg;
+            break;
+        case 'fshoe':
+            fshoeVal = err.value;
+            fshoeErr = err.msg;
+            break;
+        case 'fsocks':
+            fsocksVal = err.value;
+            fsocksErr = err.msg;
+            break;
+        case 'fglove':
+            fgloveVal = err.value;
+            fgloveErr = err.msg;
+            break;
+      }
+    }
+  }
+%>
+
+<%- include('layouts/header')-%>
+<body>
+    <section>
+        <main>
+            <form name="myForm" action="/" method="post">
+                <fieldset>
+                    <legend> Form Information</legend>
+                    <div>
+                        <label> Name: </label>
+                        <input type="text" name="name1" value="<%=nameVal%>" placeholder="Enter Your Name"/>
+                    </div>
+                    <p class="err"> <%=nameErr%> </p>
+                    <div>
+                        <label> Address: </label>
+                        <input type="text" name="add" value="<%addVal%>" placeholder="Enter Your Adress"/>
+                    </div>
+                    <p class="err"> <%=addErr%> </p>
+                    <div>
+                        <label> City: </label>
+                        <input type="text" name="city" value="<%cityVal%>" placeholder="Enter Your City"/>
+                    </div>
+                    <p class="err"> <%=cityErr%> </p>
+                    <div>
+                        <label> Province: </label>
+                        <select name="prov">
+                            <option value="">Choose a Province</option>                
+                            <option value="Ab">Alberta</option>
+                            <option value="Bc">British Columbia</option>
+                            <option value="Man">Manitoba</option>
+                            <option value="Nb">New Brunswick</option>
+                            <option value="Nl">Newfoundland and Labrador</option>
+                            <option value="Nt">Northwest Territories</option>
+                            <option value="Ns">Nova Scotia</option>
+                            <option value="Nu">Nunavut</option>
+                            <option value="On">Ontario</option>
+                            <option value="Qb">Quebec</option>
+                            <option value="Pel">Prince Edward Island</option>
+                            <option value="Sas">Saskatchewan</option>
+                            <option value="Yk">Yukon</option>
+                    </select>
+                    </div>
+                    <p class="err"> <%=provErr%> </p>
+                    <div>
+                        <label> Phone Number: </label>
+                        <input type="text" name="pnumb" value="<%pnumbVal%>" placeholder="XXXXXXXXXX"/>
+                    </div>
+                    <p class="err"> <%=pnumbErr%> </p>
+                    <div>
+                        <label> Email: </label>
+                        <input type="text" name="em" value="<%=emailVal%>" placeholder="email@domain.com"/>
+                    </div>
+                    <p class="err"> <%=emailErr%> </p>
+                    <div>
+                        <label> Football Shoes($15): </label>
+                        <input type="text" name="fshoe" value="<%fshoeVal%>" placeholder="Enter The Quantity"/>
+                    </div>
+                    <p class="err"> <%=fshoeErr%> </p>
+                    <div>
+                        <label> Football Socks($5): </label>
+                        <input type="text" name="fsocks" value="<%fsocksVal%>" placeholder="Enter the Quantity"/>
+                    </div>
+                    <p class="err"> <%=fsocksErr%> </p>
+                    <div>
+                        <label> Football Gloves($10): </label>
+                        <input type="text" name="fglove" value="<%fgloveVal%>" placeholder="Enter the Quantity"/>
+                    </div>
+                    <p class="err"> <%=fgloveErr%> </p>
+                    <div>
+                        <input type="submit" value="submit"/>
+                        <input type="reset" name="Reset"/>
+                    </div>
+                    </fieldset>
+            </form>
+        </main>
+    </section>
+    <section>
+        <aside>
+            <p id="result"> The Result of the Form will appear here: </p>
+                <% if(typeof name1 !== 'undefined'){%>
+                    <p class="rr"> Name:<%=name1%></p>
+                    <p class="rr"> Address:<%=add%></p>
+                    <p class="rr">City: <%=city%></p>
+                    <p class="rr">Province: <%=prov%></p>
+                    <p class="rr">Phone Number: <%=pnumb%></p>
+                    <p class="rr">Email: <%=em%></p>
+                    <p class="rr">Quantity of Football shoes: <%=fshoe%></p>
+                    <p class="rr"> Quantity of Football socks: <%=fsocks%></p>
+                    <p class="rr">Quantity of Football gloves <%=fglove%></p>
+                    <p class="rr">Total: $<%=total%></p>
+                    <p class="rr">Tax: $<%=tax%></p>
+                    <p class="rr">Final Total: $<%=finalTotal%></p>
+            
+                <%}%>
+
+                <% if(typeof errorMessage !== 'undefined'){%>
+                    <p id="p1"><%=errorMessage%></p>
+                <%}%> 
+            
+        </aside>
+    </section>
+</body>
+<%- include('layouts/footer')-%>
+
